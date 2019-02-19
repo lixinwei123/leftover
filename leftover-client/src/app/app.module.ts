@@ -6,25 +6,36 @@ import { StatusBar } from '@ionic-native/status-bar';
 
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
+import { UserinfoProvider } from '../providers/userinfo/userinfo';
 
+import {AngularFireModule} from "@angular/fire";
+import {AngularFireAuthModule} from "@angular/fire/auth";
+import {FIREBASE_CONFIG} from './app.firebase.config';
+
+import {RegisterComponent} from '../components/register/register';
 @NgModule({
   declarations: [
     MyApp,
-    HomePage
+    HomePage,
+    RegisterComponent
   ],
   imports: [
     BrowserModule,
-    IonicModule.forRoot(MyApp)
+    IonicModule.forRoot(MyApp),
+    AngularFireModule.initializeApp(FIREBASE_CONFIG),
+    AngularFireAuthModule,
   ],
   bootstrap: [IonicApp],
   entryComponents: [
     MyApp,
-    HomePage
+    HomePage,
+    RegisterComponent
   ],
   providers: [
     StatusBar,
     SplashScreen,
-    {provide: ErrorHandler, useClass: IonicErrorHandler}
+    {provide: ErrorHandler, useClass: IonicErrorHandler},
+    UserinfoProvider
   ]
 })
 export class AppModule {}

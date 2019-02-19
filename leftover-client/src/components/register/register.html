@@ -1,0 +1,36 @@
+<!-- Generated template for the RegisterComponent component -->
+
+<ion-content>
+	
+<button ion-button icon-only (click) = "closeModal();" class = "close-button"><ion-icon name = "close"></ion-icon></button>
+	<h1>Registration</h1>
+	<div class = "input-information">
+		<ion-item>
+		<ion-label floating>Email Address</ion-label>
+		<ion-input type="text" [(ngModel)] = "email"></ion-input>
+		</ion-item>
+		<ion-item>
+		<ion-label floating>Confirm Email Address</ion-label>
+		<ion-input type="text" [(ngModel)] = "emailC"></ion-input>
+		</ion-item>
+		<ion-item>
+		<ion-label floating >Password</ion-label>
+		<ion-input type="password"[(ngModel)] = "password" ></ion-input>
+		</ion-item>
+			<ion-item>
+		<ion-label floating >Confirm Password</ion-label>
+		<ion-input type="password" [(ngModel)] = "passwordC"></ion-input>
+		</ion-item>
+		<ion-item>
+		<ion-label floating>First Name</ion-label>
+		<ion-input type="text" [(ngModel)] = "firstname"></ion-input>
+		</ion-item>
+		<ion-item>
+		<ion-label floating>Last Name</ion-label>
+		<ion-input type="text" [(ngModel)] = "lastname"></ion-input>
+		</ion-item>
+	</div>
+		<div class = "next-step">		
+			<button ion-button (click) = "finishRegistration()">Finish Registration</button>
+		</div>
+</ion-content>
