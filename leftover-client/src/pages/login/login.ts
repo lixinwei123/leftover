@@ -39,11 +39,8 @@ email: string;
     this.afAuth.authState.subscribe(data => {
       if(data.email){
         this.usrInfo.setUsrId(data.uid);
-       this.navCtrl.setRoot("OwnedBooksPage");
-        this.toast.create({
-        message: "welcome to textbookexchange :) " + data.email,
-        duration: 6000
-      }).present();
+        this.navCtrl.setRoot("CreateGroupPage");
+       
       }
      else{
        console.log("no one logged in yet");
@@ -71,7 +68,7 @@ async login(){
         this.afAuth.auth.signInWithEmailAndPassword(this.email,this.password).then(res =>{
         console.log("Logged in ha",res.user);
       if(res.user.uid){
-         this.navCtrl.setRoot("OwnedBooksPage");
+         this.navCtrl.setRoot("CreateGroupPage");
       }
       },
       fail =>{
