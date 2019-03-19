@@ -3,6 +3,7 @@ import { IonicPage, NavController, NavParams, ModalController,ActionSheetControl
 import {AngularFireModule} from "@angular/fire";
 import {AngularFireAuth} from "@angular/fire/auth";
 import { Injectable } from '@angular/core';
+import {RestProvider} from "../../providers/rest/rest";
 //import { Database } from 'firebase/database';
 /**
  * Generated class for the RegisterComponent component.
@@ -30,7 +31,9 @@ export class RegisterComponent {
    public viewCtrl: ViewController,
     public events: Events,
     private afAuth: AngularFireAuth,
-    private alertCtrl: AlertController) {
+    private alertCtrl: AlertController,
+    private restAPI: RestProvider
+    ) {
     console.log('Hello RegisterComponent Component');
     this.text = 'Hello World';
   }
@@ -85,13 +88,13 @@ finishRegistration(){
      lastname: this.lastname
    }
        console.log("registered",res.user.uid)
-    // this.restAPI.postRequest(usrInfo,'/createUser').then(( result) =>{
-    //   console.log(result);
-    // },
-    // (err) => {
-    //   console.log("error",err);
-    // },
-    // );
+    this.restAPI.postRequest(usrInfo,'/createUser').then(( result) =>{
+      console.log(result);
+    },
+    (err) => {
+      console.log("error",err);
+    },
+    );
       this.closeModal()
   },
     fail =>{

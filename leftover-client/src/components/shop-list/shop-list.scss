@@ -1,0 +1,36 @@
+shop-list {
+	ion-content{
+		    opacity: 0.9;
+		    h1{
+		    	text-align: center;
+		    	margin-top:1.2rem!important;
+		    	margin-left:3rem!important;
+		    }
+	}
+	.close-button{
+		float:right;
+		background: transparent;
+		color:black;
+		box-shadow: none;
+	}
+	.delete-button{
+		box-shadow: none;
+		background-color: transparent;
+		color:#840e1e;
+		width: 2rem;
+		height: 2rem;
+		float: right;
+	}
+	.add-button{
+		color : color($colors,secondary) !important;
+	}
+	.create-button{
+		color: #3261ad !important;
+	}
+		.isbn-margin{
+		margin-left: 2rem !important;
+	}
+	.options-margin{
+		margin-right: 2rem !important;
+	}
+}
