@@ -15,6 +15,7 @@ import {FIREBASE_CONFIG} from './app.firebase.config';
 
 import {RegisterComponent} from '../components/register/register';
 import { RestProvider } from '../providers/rest/rest';
+import {ShopListComponent} from '../components/shop-list/shop-list';
 import {MenuComponent} from '../components/menu/menu';
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import {MenuComponent} from '../components/menu/menu';
     HomePage,
     // LoginPage,
     RegisterComponent,
-    MenuComponent
+    MenuComponent,
+    ShopListComponent
   ],
   imports: [
     BrowserModule,
@@ -36,7 +38,8 @@ import {MenuComponent} from '../components/menu/menu';
     MyApp,
     HomePage,
     // LoginPage,
-    RegisterComponent
+    RegisterComponent,
+    ShopListComponent
   ],
   providers: [
     StatusBar,

@@ -12,5 +12,14 @@
         <ion-icon name='menu'></ion-icon>
       </button>
     </ion-buttons>
-    booper
+   	<div *ngIf = "mainChoice">
+<h1 class = "header-info">do you wish to register the books you owned or the books you need?</h1>
+<ion-grid class = "need-or-sell">
+	<ion-row>
+		<ion-col><button ion-button class = "button-1" (click) = "goToShopList()">Create a shopping list</button></ion-col>
+
+		<ion-col><button ion-button class = "button-2" (click) = "goToNeedBooks()">Created Lists</button></ion-col>
+	</ion-row>
+</ion-grid>
+</div>
 </ion-content>

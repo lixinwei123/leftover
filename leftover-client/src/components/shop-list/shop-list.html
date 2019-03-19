@@ -1,52 +1,49 @@
 
 <ion-content>
 <button ion-button icon-only (click) = "closeModal();" class = "close-button"><ion-icon name = "close"></ion-icon></button>
-	<h1>Needed Books</h1>
+	<h1><ion-input type="text" placeholder = "Enter the name of this list. Eg: Friday Shopping" ></ion-input></h1>
 	<ion-grid>
-		<h3 style = "margin-left:0.8rem;">Registered Books:</h3>
+		<h3 style = "margin-left:0.8rem;">Enter info of each item</h3>
 		<ion-row style = "margin-top:1rem;">
 			<ion-col class = "isbn-margin">
-				ISBN
+				Item Name
 			</ion-col>
 			<ion-col>
-				name
+				Amount to buy
 			</ion-col>
 			<ion-col class = "options-margin">
-				options
+				Price
 			</ion-col>
 		</ion-row>
-		<ion-row *ngFor = "let book of neededBooks">
+		<ion-row *ngFor = "let item of shoppingList">
 			<ion-col class = "isbn-margin">
-				{{book.isbn}}
+				{{item.name}}
 			</ion-col>
 			<ion-col>
-				 {{book.name}}
+				 {{item.amount}}
 			</ion-col>			
-			<ion-col class = "options-margin">
-				<span *ngIf = "book.exchange" ><ion-icon name = "checkbox" color = "secondary"></ion-icon> Exchange &nbsp; &nbsp;</span>
-				<span *ngIf = "book.buy"> <ion-icon name = "checkbox" ></ion-icon> Buy ${{book.price}}</span> 
-				<button ion-button icon-only class = "delete-button" (click) = "confirmDeletion(book)"> <ion-icon name = "close" ></ion-icon></button>
+			<ion-col>
+				 {{item.price}}
+			</ion-col>	
+	<button ion-button icon-only class = "delete-button" (click) = "confirmDeletion(book)"> <ion-icon name = "close" ></ion-icon></button>
 				<button ion-button icon-only class = "create-button delete-button" (click) = "editBook(book)"> <ion-icon name = "create" ></ion-icon></button>
-			</ion-col>
 		</ion-row>
 	</ion-grid>
 	<ion-grid>
 		<ion-row>
 			<ion-col>
-				<ion-input type="text" placeholder = "ISBN" [(ngModel)] = "bookISBN"></ion-input>
+				<ion-input type="text" placeholder = "Name" [(ngModel)] = "bookISBN"></ion-input>
 			</ion-col>
 			<ion-col>
-				<ion-input type="text" placeholder = "Book Name" [(ngModel)]="bookName"></ion-input>
+				<ion-input type="text" placeholder = "Number" [(ngModel)]="bookName"></ion-input>
 			</ion-col>
-			<ion-col style = "margin:auto;">
-					<span><ion-checkbox color="secondary" checked="true" [(ngModel)] = "bookExchange"></ion-checkbox> Exchange &nbsp; &nbsp;</span>
-					<span><ion-checkbox color="dark" checked="true" [(ngModel)] = "bookBuy"></ion-checkbox> Buy </span>
-					<button ion-button icon-only class = "add-button delete-button" (click) = "addBook()"> 
-						<ion-icon name = "add" *ngIf = "!currentEdit"></ion-icon>
-						<ion-icon name = "create" *ngIf = "currentEdit"></ion-icon>
-					</button> 
-					<ion-input placeholder = "maximum amount willing to buy" *ngIf = "bookBuy" [(ngModel)] = "bookPrice"></ion-input>
+			<ion-col>
+				<ion-input type="text" placeholder = "Price" [(ngModel)]="bookName"></ion-input>
 			</ion-col>
+			<button ion-button icon-only class = "add-button delete-button" (click) = "addBook()"> 
+				<ion-icon name = "add" *ngIf = "!currentEdit"></ion-icon>
+				<ion-icon name = "create" *ngIf = "currentEdit"></ion-icon>
+			</button> 
 		</ion-row>
 	</ion-grid>
 </ion-content>

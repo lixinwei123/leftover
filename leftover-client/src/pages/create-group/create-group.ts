@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams,Events,ModalController ,MenuController} from 'ionic-angular';
-// import {NeedBookComponent} from '../../components/need-book/need-book';
+import {ShopListComponent} from '../../components/shop-list/shop-list';
 // import {OwnBookComponent} from '../../components/own-book/own-book';
 import {UserinfoProvider} from "../../providers/userinfo/userinfo";
 // import {FindMatchComponent} from '../../components/find-match/find-match';
@@ -48,11 +48,12 @@ export class CreateGroupPage {
   // 	this.mainChoice = false;
   // 	modal.present();
   // }
-  // goToNeedBooks(){
-  // 	 let modal = this.modalCtrl.create(NeedBookComponent);
-  // 	 this.mainChoice = false;
-  // 	 	modal.present();
-  // }
+}
+  goToShopList(){
+  	 let modal = this.modalCtrl.create(ShopListComponent);
+  	 this.mainChoice = false;
+  	 	modal.present();
+  }
   // goToFindMatch(){
   //     let modal = this.modalCtrl.create(FindMatchComponent);
   //     this.mainChoice = false;
@@ -63,4 +64,4 @@ export class CreateGroupPage {
   //   this.events.publish('showChoices');
   // }
 }
-}
+
