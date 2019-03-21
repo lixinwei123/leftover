@@ -1,32 +1,41 @@
 
+<ion-header>
+	<ion-navbar>
+		<ion-title>Create a new shopping list</ion-title>
+		<ion-buttons end>
+			<button ion-button icon-only (click) = "closeModal();" class = "close-button"><ion-icon name = "close"></ion-icon></button>
+		</ion-buttons>
+	</ion-navbar>
+</ion-header>
+
+
 <ion-content>
-		
-	<button ion-button icon-only (click) = "closeModal();" class = "close-button"><ion-icon name = "close"></ion-icon></button>
+	<h1>Got a quick nutrition question? Ask us!</h1>
 	<ion-item>
-			<ion-label floating>Got a question?</ion-label>
-			<ion-input type="text" value="" [(ngModel)]="question"></ion-input>
-		</ion-item>
-		<button ion-button block (click)="askQuestion()">Submit</button>
+		<ion-label floating>Got a question?</ion-label>
+		<ion-input type="text" value="" [(ngModel)]="question"></ion-input>
+	</ion-item>
+	<button ion-button block (click)="askQuestion()">Submit</button>
 
 
 	<h1>
 		<ion-input type="text" placeholder = "Enter the name of this list. Eg: Friday Shopping" ></ion-input>
 	</h1>
-	<ion-grid>
+	<!-- <ion-grid>
 		<h3 style = "margin-left:0.8rem;">Enter info of each item</h3>
 		<ion-row style = "margin-top:1rem;">
 			<ion-col class = "isbn-margin">
 				Item Name
 			</ion-col>
 			<ion-col>
-				Amount to buy
+				Amount
 			</ion-col>
 			<ion-col class = "options-margin">
 				Price
 			</ion-col>
 		</ion-row>
 		<ion-row *ngFor = "let item of shoppingList">
-			<ion-col class = "isbn-margin">
+			<ion-col>
 				{{item.name}}
 			</ion-col>
 			<ion-col>
@@ -35,22 +44,26 @@
 			<ion-col>
 				 {{item.price}}
 			</ion-col>	
-	<button ion-button icon-only class = "delete-button" (click) = "confirmDeletion(book)"> <ion-icon name = "close" ></ion-icon></button>
-				<button ion-button icon-only class = "create-button delete-button" (click) = "editBook(book)"> <ion-icon name = "create" ></ion-icon></button>
+			<button ion-button icon-only class = "delete-button" (click) = "confirmDeletion(book)"> <ion-icon name = "close" ></ion-icon></button>
+			
+			<button ion-button icon-only class = "create-button delete-button" (click) = "editBook(book)"> <ion-icon name = "create" ></ion-icon></button>
 		</ion-row>
-	</ion-grid>
+	</ion-grid> -->
+
 	<ion-grid>
+
+
 		<ion-row>
 			<ion-col>
-				<ion-input type="text" placeholder = "Name" [(ngModel)] = "bookISBN"></ion-input>
+				<ion-input type="text" placeholder = "Name" [(ngModel)] = "newItem.name"></ion-input>
 			</ion-col>
 			<ion-col>
-				<ion-input type="text" placeholder = "Number" [(ngModel)]="bookName"></ion-input>
+				<ion-input type="text" placeholder = "Number" [(ngModel)]="newItem.amount"></ion-input>
 			</ion-col>
 			<ion-col>
-				<ion-input type="text" placeholder = "Price" [(ngModel)]="bookName"></ion-input>
+				<ion-input type="text" placeholder = "Price" [(ngModel)]="newItem.price"></ion-input>
 			</ion-col>
-			<button ion-button icon-only class = "add-button delete-button" (click) = "addBook()"> 
+			<button ion-button icon-only class = "add-button delete-button" (click) = "addItem()"> 
 				<ion-icon name = "add" *ngIf = "!currentEdit"></ion-icon>
 				<ion-icon name = "create" *ngIf = "currentEdit"></ion-icon>
 			</button> 
