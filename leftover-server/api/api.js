@@ -22,5 +22,23 @@ module.exports = {
             
         })
         
+    },
+    askTrivia: ()=>{
+        let url2 = "https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com/food/jokes/random"
+        return new Promise((resolve, reject) => {
+            unirest.get(url2)
+            .header("X-RapidAPI-Key", API_KEY)
+            .end(function(response) {
+
+                console.log(response)
+                console.log(response.status)
+                if (response.err) {
+                    console.log(response.err)
+                    // reject(response.err)
+                }
+                
+                resolve(response.body)
+            })
+        })
     }
 }

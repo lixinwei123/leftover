@@ -15,9 +15,9 @@ export class RestProvider {
   }
 
 
- postRequest(uObj: object, method: string) {
+ postRequest(uObj: object, method: string): Promise<any> {
   return new Promise((resolve, reject) => {
-     this.http.post(this.apiUrl+ method, uObj, {responseType: 'text'})
+     this.http.post(this.apiUrl+ method, uObj,)
       .subscribe(res => {
         resolve(res);
       }, (err) => {
@@ -26,5 +26,14 @@ export class RestProvider {
   });
 }
 
-getRequest(uObj,method){}
+getRequest(uObj=null,method): Promise<any>{
+  return new Promise((resolve, reject) => {
+    this.http.get(this.apiUrl+method, uObj)
+     .subscribe(res => {
+       resolve(res);
+     }, (err) => {
+       reject(err);
+     });
+ });
+}
 }

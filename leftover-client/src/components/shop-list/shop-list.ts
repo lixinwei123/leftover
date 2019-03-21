@@ -24,6 +24,7 @@ export class ShopListComponent {
   shoppingItems: Array<ShoppingItem> = [] //TODO Kevin: populate this arr
 
 
+  answer:any;
   constructor(public navCtrl: NavController,
 	public navParams: NavParams,
 	public modalCtrl: ModalController, 
@@ -117,11 +118,15 @@ submitList() {
 			{question: this.question}, "/askQuestion",
 		).then(response => {
 			console.log('le answer', response)
+			this.answer = response.answer || "Sorry, there is no answer right now."
+			
 		})
 		.catch(err => {
 			console.log('err', err)
 		})
 	}
+
+	
 }
 
 

@@ -3,6 +3,7 @@ import { IonicPage, NavController, NavParams, ModalController,ActionSheetControl
 import {RegisterComponent} from '../../components/register/register';
 import {AngularFireAuth} from "@angular/fire/auth";
 import {UserinfoProvider} from "../../providers/userinfo/userinfo";
+import { RestProvider } from '../../providers/rest/rest';
 // import {RegisterPage} from '../pages/register/register';
 /**
  * Generated class for the LoginPage page.
@@ -20,11 +21,13 @@ export class LoginPage {
 displayLogin = true;
 password: string;
 email: string;
+joke: string;
   constructor(public navCtrl: NavController, public navParams: NavParams, public events: Events,
     public toast: ToastController,
     public afAuth: AngularFireAuth,
   	public modalCtrl: ModalController,
-  	public actionSheet: ActionSheetController,
+    public actionSheet: ActionSheetController,
+    private restAPI: RestProvider,
     public alertCtrl: AlertController,
     private usrInfo: UserinfoProvider) {
   	this.events.subscribe('showLoginCard', () =>{
@@ -54,6 +57,7 @@ goToRegister(){
 	regModal.present();
 	this.displayLogin = false;
 }
+
 
 alertError(error) {
   var alert = this.alertCtrl.create(
