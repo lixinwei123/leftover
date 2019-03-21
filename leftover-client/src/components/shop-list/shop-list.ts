@@ -106,6 +106,8 @@ submitList() {
 	else {
 		//Add a whole new list
 	}
+
+	this.viewCtrl.dismiss()
 }
 
 
