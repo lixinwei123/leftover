@@ -68,6 +68,8 @@ export class CreateGroupPage {
   //   this.events.publish('showChoices');
   // }
 
+  /**Adds random joke from joke API */
+
   askTrivia() {
     this.restAPI.getRequest({}, '/askTrivia').then(response => {
       console.log('le joke', response.text)
