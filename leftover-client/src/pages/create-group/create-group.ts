@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams,Events,ModalController ,MenuController} from 'ionic-angular';
+import { IonicPage, NavController, NavParams,Events,ModalController ,MenuController, AlertController} from 'ionic-angular';
 import {ShopListComponent} from '../../components/shop-list/shop-list';
 // import {OwnBookComponent} from '../../components/own-book/own-book';
 import {UserinfoProvider} from "../../providers/userinfo/userinfo";
@@ -21,6 +21,7 @@ export class CreateGroupPage {
 	mainChoice = true;
 
   constructor(public navCtrl: NavController, 
+    public alertCtrl: AlertController,
   	public navParams: NavParams,
   	public events:Events,
   	 public modalCtrl: ModalController,
@@ -43,25 +44,38 @@ export class CreateGroupPage {
     console.log('ionViewDidLoad OwnedBooksPage');
   }
 
-  goToOwnedBooks(){
-  // 	let modal = this.modalCtrl.create(OwnBookComponent)
-  // 	this.mainChoice = false;
-  // 	modal.present();
-  // }
-}
+  
   goToShopList(){
-  	 let modal = this.modalCtrl.create(ShopListComponent);
-  	 this.mainChoice = false;
-  	 	modal.present();
+    let modal = this.modalCtrl.create(ShopListComponent);
+    this.mainChoice = false;
+    modal.present();
   }
-  // goToFindMatch(){
-  //     let modal = this.modalCtrl.create(FindMatchComponent);
-  //     this.mainChoice = false;
-  //     modal.present();
-  // }
 
-  // ionViewWillLeave(){
-  //   this.events.publish('showChoices');
-  // }
+  editAShopList() {
+    let alert = this.alertCtrl.create({
+      title: 'Enter the ID of the shopping list you want to edit',
+      inputs: [
+        {
+          id: "id",
+          placeholder: 'id'
+        }
+      ],
+      buttons: [
+        {
+          text: 'Cancel',
+          role: 'cancel'
+        },
+        {
+          text: 'Submit',
+          handler: (data) => {
+            console.log(data[0])
+            this.modalCtrl.create(ShopListComponent, {id: data[0]})
+          }
+        }
+      ]
+    })
+    alert.present()
+  }
+
 }
 
