@@ -15,53 +15,41 @@
 		<ion-label floating>Got a question?</ion-label>
 		<ion-input type="text" value="" [(ngModel)]="question"></ion-input>
 	</ion-item>
-	<button ion-button block (click)="askQuestion()">Submit</button>
+	<button ion-button (click)="askQuestion()">Submit</button>
 
 
 	<h1>
+		Your Shopping List
 		<ion-input type="text" placeholder = "Enter the name of this list. Eg: Friday Shopping" ></ion-input>
 	</h1>
-	<!-- <ion-grid>
-		<h3 style = "margin-left:0.8rem;">Enter info of each item</h3>
-		<ion-row style = "margin-top:1rem;">
-			<ion-col class = "isbn-margin">
-				Item Name
-			</ion-col>
-			<ion-col>
-				Amount
-			</ion-col>
-			<ion-col class = "options-margin">
-				Price
-			</ion-col>
-		</ion-row>
-		<ion-row *ngFor = "let item of shoppingList">
-			<ion-col>
-				{{item.name}}
-			</ion-col>
-			<ion-col>
-				 {{item.amount}}
-			</ion-col>			
-			<ion-col>
-				 {{item.price}}
-			</ion-col>	
-			<button ion-button icon-only class = "delete-button" (click) = "confirmDeletion(book)"> <ion-icon name = "close" ></ion-icon></button>
-			
-			<button ion-button icon-only class = "create-button delete-button" (click) = "editBook(book)"> <ion-icon name = "create" ></ion-icon></button>
-		</ion-row>
-	</ion-grid> -->
+	
 
 	<ion-grid>
+		<!-- CURRENT ITEM HERE -->
+		<ion-row *ngFor="let item of shoppingItems; let i = index">
+			<ion-col>
+				<ion-input [(ngModel)]="item.name"></ion-input>
+			</ion-col>
+			<ion-col>
+				<ion-input [(ngModel)]="item.amount"></ion-input>
+			</ion-col>
+			<ion-col>
+				<ion-input [(ngModel)]="item.price"></ion-input>
+			</ion-col>
+			<button ion-button icon-only class = "delete-button" (click) = "deleteItem(i)"> <ion-icon name = "close" ></ion-icon></button>
+		</ion-row>
 
-
+		
+		<!-- ADD NEW ITEM HERE -->
 		<ion-row>
 			<ion-col>
-				<ion-input type="text" placeholder = "Name" [(ngModel)] = "newItem.name"></ion-input>
+				<ion-input type="text" placeholder = "Name" [(ngModel)] = "newItem.name" (keyup.enter)="addItem()"></ion-input>
 			</ion-col>
 			<ion-col>
-				<ion-input type="text" placeholder = "Number" [(ngModel)]="newItem.amount"></ion-input>
+				<ion-input type="text" placeholder = "Amount (optional)" [(ngModel)]="newItem.amount" (keyup.enter)="addItem()"></ion-input>
 			</ion-col>
 			<ion-col>
-				<ion-input type="text" placeholder = "Price" [(ngModel)]="newItem.price"></ion-input>
+				<ion-input type="text" placeholder = "Price (optional)" [(ngModel)]="newItem.price" (keyup.enter)="addItem()"></ion-input>
 			</ion-col>
 			<button ion-button icon-only class = "add-button delete-button" (click) = "addItem()"> 
 				<ion-icon name = "add" *ngIf = "!currentEdit"></ion-icon>

@@ -19,6 +19,8 @@ export class ShopListComponent {
 	  price: null,
   }
 
+  shoppingItems: Array<ShoppingItem> = [] //TODO Kevin: populate this arr
+
 
   constructor(public navCtrl: NavController,
    public modalCtrl: ModalController, 
@@ -28,19 +30,20 @@ export class ShopListComponent {
     private restAPI: RestProvider,
     private usrInfo: UserinfoProvider
   	) {
-  	// this.getBookArr();
+  	this.getShoppingItems();
   }
 
 
-getItemsArr(){
+getShoppingItems(){
 	// this.neededBooks = this.usrInfo.getNeededBookArray();
 	// if(this.neededBooks.length <= 0){
 	// 	setTimeout(bad => {this.getBookArr()}, 1000)
 	// }
 }
-  ionViewWillLeave(){
-    this.events.publish('showChoices');
-  }
+
+ionViewWillLeave(){
+this.events.publish('showChoices');
+}
 
 closeModal(){
 	this.viewCtrl.dismiss();
@@ -48,14 +51,11 @@ closeModal(){
 	console.log('clicked on closeModal function');
 }
 
-//ADD ENTRY OR MODIFY CURRENT ENTRY BASED ON THE BOOLEAN VARIABLE 
+//ADD ENTRY
 addItem(){
 	console.log('item', this.newItem)
 
-	//*TODO Kevin: Add this.newItem to the backend here
-	
-	
-	//END of backend work, time to reset this.newItem
+	this.shoppingItems.push(this.newItem)
 	this.newItem = {
 		name: "",
 		amount: null,
@@ -63,54 +63,11 @@ addItem(){
 	}
 }
 
-// deleteBook(bookInfo){
-// 	console.log("bookInfo",bookInfo);
-
-// 	for(var i in this.neededBooks){
-// 		if(this.neededBooks[i].isbn == bookInfo.isbn){
-// 			this.neededBooks.splice(parseInt(i),1);
-// 			var obj = {
-// 				isbn: bookInfo.isbn,
-// 				uid: this.usrInfo.getUsrId()
-// 			}
-// 			this.postReq(obj,'/deleteNeededBook')
-// 		}
-// 	}
-// }
-
-showAlert(alertMessage){
-	// let alertCtrl = this.alertCtrl.create({
-	// 	title: alertMessage,
-	// 	buttons: [
-	// 	{
-	// 		text: "got it",
-	// 		role: "cancel"
-	// 	}
-	// 	]
-	// });
-	// alertCtrl.present();
+//DELETE ITEM
+deleteItem(index: number){
+	this.shoppingItems.splice(index, 1);
 }
 
-//POP CONFIRMATION OF DELETION
-confirmDeletion(bookInfo){
-	// let alertCtrl = this.alertCtrl.create({
-	// 	title: "are you sure you want to delete this entry?",
-	// 	buttons: [
-	// 	{
-	// 		text: "delete",
-	// 		role: "ok",
-	// 		handler: () => {
-	// 			// this.deleteBook(bookInfo)
-	// 		}
-	// 	},
-	// 	{
-	// 		text: "cancel",
-	// 		role: "cancel",
-	// 	}
-	// 	]
-	// });
-	// alertCtrl.present();
-}
 
 /*****************API STUFF */
 	askQuestion() {
