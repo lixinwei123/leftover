@@ -1,7 +1,17 @@
 
 <ion-content>
-<button ion-button icon-only (click) = "closeModal();" class = "close-button"><ion-icon name = "close"></ion-icon></button>
-	<h1><ion-input type="text" placeholder = "Enter the name of this list. Eg: Friday Shopping" ></ion-input></h1>
+		
+	<button ion-button icon-only (click) = "closeModal();" class = "close-button"><ion-icon name = "close"></ion-icon></button>
+	<ion-item>
+			<ion-label floating>Got a question?</ion-label>
+			<ion-input type="text" value="" [(ngModel)]="question"></ion-input>
+		</ion-item>
+		<button ion-button block (click)="askQuestion()">Submit</button>
+
+
+	<h1>
+		<ion-input type="text" placeholder = "Enter the name of this list. Eg: Friday Shopping" ></ion-input>
+	</h1>
 	<ion-grid>
 		<h3 style = "margin-left:0.8rem;">Enter info of each item</h3>
 		<ion-row style = "margin-top:1rem;">
@@ -46,4 +56,6 @@
 			</button> 
 		</ion-row>
 	</ion-grid>
+
+	
 </ion-content>

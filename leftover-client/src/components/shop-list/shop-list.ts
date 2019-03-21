@@ -2,38 +2,24 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, ModalController,ActionSheetController, ViewController, Events, AlertController} from 'ionic-angular';
 // import {RestProvider} from "../../providers/rest/rest";
 import {UserinfoProvider} from "../../providers/userinfo/userinfo";
+import { RestProvider } from '../../providers/rest/rest';
 @Component({
   selector: 'shop-list',
   templateUrl: 'shop-list.html'
 })
 export class ShopListComponent {
 
-  text: string;
-  bookBuy = false;
-  bookExchange = true;
-  bookName: string;
-  bookISBN: any;
-  bookPrice: number;
-  currentIndex:any; //for getting the current index of the book that the user is editting right now. 
-  currentEdit = false; //if currentEdit is false, then addBook function will add a new entry, if it's true, then addbook will modify existing entry.
-  //below is hardcoded fake data for testing purpose only
-  //neededBooks = [{isbn:1931283412831,name:"Conception of Mind",buy:true,exchange:true, price: 21}];
-		// 		{isbn:1838407937423,name:"Calculus Fundamentals 101",buy:true,exchange:false, price: 34},
-		// 		{isbn:9534241410034,name:"Art History and Man Kind 221",buy:false,exchange:true}
-  //];
-  bookArray: any;
-  oldISBN: any;
-  neededBooks: any;
+ 
+
+  question: string;
   constructor(public navCtrl: NavController,
    public modalCtrl: ModalController, 
    public viewCtrl: ViewController,
     public events: Events,
     public alertCtrl: AlertController,
-    // private restAPI: RestProvider,
+    private restAPI: RestProvider,
     private usrInfo: UserinfoProvider
   	) {
-  	console.log("Hello RegisterComponent Component");
-  	this.text = "Hello World";
   	// this.getBookArr();
   }
 
@@ -188,6 +174,18 @@ editBook(bookInfo){
 // 	}
 // 	}
 }
+
+/*****************API STUFF */
+	askQuestion() {
+		this.restAPI.postRequest(
+			{question: this.question}, "/askQuestion",
+		).then(response => {
+			console.log('le answer', response)
+		})
+		.catch(err => {
+			console.log('err', err)
+		})
+	}
 }
 
 

@@ -15,7 +15,7 @@ export class RestProvider {
   }
 
 
- postRequest(uObj,method) {
+ postRequest(uObj: object, method: string) {
   return new Promise((resolve, reject) => {
      this.http.post(this.apiUrl+ method, uObj, {responseType: 'text'})
       .subscribe(res => {
