@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import {AngularFireAuth} from "@angular/fire/auth";
+import * as shortID from 'shortid';
 /*
   Generated class for the UserinfoProvider provider.
 
@@ -37,4 +38,9 @@ neededBookArray : any;
   	return this.uid;
   }
 
+  getShortUniqueID() {
+    return shortID.generate()
+  }
+
+  
 }

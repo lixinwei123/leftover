@@ -69,7 +69,7 @@ export class CreateGroupPage {
           text: 'Submit',
           handler: (data) => {
             console.log(data[0])
-            this.modalCtrl.create(ShopListComponent, {id: data[0]})
+            this.modalCtrl.create(ShopListComponent, {id: data[0]}).present()
           }
         }
       ]

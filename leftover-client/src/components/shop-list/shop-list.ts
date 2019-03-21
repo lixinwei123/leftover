@@ -12,6 +12,8 @@ export class ShopListComponent {
  
 
   question: string;
+  editMode: boolean = false;
+  shoppingListID: string = ""
 
   newItem: ShoppingItem = {
 	  name: "",
@@ -23,22 +25,35 @@ export class ShopListComponent {
 
 
   constructor(public navCtrl: NavController,
-   public modalCtrl: ModalController, 
-   public viewCtrl: ViewController,
+	public navParams: NavParams,
+	public modalCtrl: ModalController, 
+	public viewCtrl: ViewController,
     public events: Events,
     public alertCtrl: AlertController,
     private restAPI: RestProvider,
     private usrInfo: UserinfoProvider
-  	) {
-  	this.getShoppingItems();
+  	) {	
+		let id = this.navParams.get('id')
+		if (id) {
+			//EDIT MODE IS TRUE, we gotta get the shopping list
+			this.editMode = true
+			this.shoppingListID = id
+			this.getShoppingItems(id)
+		}
+		else {
+			//EDIT MODE IS FALSE, we gotta generate a new ID
+			this.editMode = false
+			this.shoppingListID = this.usrInfo.getShortUniqueID()
+		}
+
   }
 
+copyID() {
+	window.prompt("Enter Ctrl+C or Cmd+C to copy", this.shoppingListID)
+}
 
-getShoppingItems(){
-	// this.neededBooks = this.usrInfo.getNeededBookArray();
-	// if(this.neededBooks.length <= 0){
-	// 	setTimeout(bad => {this.getBookArr()}, 1000)
-	// }
+getShoppingItems(id: string = ""){
+	//TODO Kevin: get the list of shopping items here
 }
 
 ionViewWillLeave(){
@@ -46,9 +61,23 @@ this.events.publish('showChoices');
 }
 
 closeModal(){
-	this.viewCtrl.dismiss();
-	this.events.publish('showChoices');
-	console.log('clicked on closeModal function');
+	let alert = this.alertCtrl.create({
+		title: 'Cancel',
+		subTitle: 'Are you sure you want to quit?',
+		buttons: [
+			{
+				text: 'Yes',
+				handler: () => {
+					this.viewCtrl.dismiss()
+				}
+			},
+			{
+				text: 'No',
+				role: 'cancel'
+			}
+		]
+	})
+	alert.present()
 }
 
 //ADD ENTRY
@@ -66,6 +95,17 @@ addItem(){
 //DELETE ITEM
 deleteItem(index: number){
 	this.shoppingItems.splice(index, 1);
+}
+
+//TODO Kevin: submit this.shoppingItems to SQL database here
+submitList() {
+	
+	if (this.editMode) {
+		//Update current list
+	}
+	else {
+		//Add a whole new list
+	}
 }
 
 
