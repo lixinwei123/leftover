@@ -12,6 +12,7 @@ export class ShopListComponent {
  
 
   question: string;
+  answer:any;
   constructor(public navCtrl: NavController,
    public modalCtrl: ModalController, 
    public viewCtrl: ViewController,
@@ -181,6 +182,8 @@ editBook(bookInfo){
 			{question: this.question}, "/askQuestion",
 		).then(response => {
 			console.log('le answer', response)
+			this.answer = response.answer || "Sorry, there is no answer right now."
+			
 		})
 		.catch(err => {
 			console.log('err', err)
