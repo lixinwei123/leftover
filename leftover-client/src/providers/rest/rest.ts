@@ -26,5 +26,14 @@ export class RestProvider {
   });
 }
 
-getRequest(uObj,method){}
+getRequest(uObj=null,method): Promise<any>{
+  return new Promise((resolve, reject) => {
+    this.http.get(this.apiUrl+method, uObj)
+     .subscribe(res => {
+       resolve(res);
+     }, (err) => {
+       reject(err);
+     });
+ });
+}
 }

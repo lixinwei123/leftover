@@ -3,6 +3,7 @@ import { IonicPage, NavController, NavParams,Events,ModalController ,MenuControl
 import {ShopListComponent} from '../../components/shop-list/shop-list';
 // import {OwnBookComponent} from '../../components/own-book/own-book';
 import {UserinfoProvider} from "../../providers/userinfo/userinfo";
+import { RestProvider } from '../../providers/rest/rest';
 // import {FindMatchComponent} from '../../components/find-match/find-match';
 
 /**
@@ -19,14 +20,17 @@ import {UserinfoProvider} from "../../providers/userinfo/userinfo";
 })
 export class CreateGroupPage {
 	mainChoice = true;
-
+  text:any;
+  //answer:any;
   constructor(public navCtrl: NavController, 
   	public navParams: NavParams,
   	public events:Events,
   	 public modalCtrl: ModalController,
      private menuCtrl: MenuController,
+     public restAPI: RestProvider,
      private usrInfo: UserinfoProvider) {
     this.mainChoice = true;
+    this.askTrivia();
   	 this.events.subscribe('showChoices', () =>{
   		console.log("this got triggered");
   		this.mainChoice = true;
@@ -63,5 +67,15 @@ export class CreateGroupPage {
   // ionViewWillLeave(){
   //   this.events.publish('showChoices');
   // }
+
+  askTrivia() {
+    this.restAPI.getRequest({}, '/askTrivia').then(response => {
+      console.log('le joke', response.text)
+      this.text = response.text
+    })
+    .catch(err => {
+      console.log('err', err)
+    })
+  }
 }
 
