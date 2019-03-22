@@ -50,10 +50,10 @@
 				<!-- CURRENT ITEM HERE -->
 				<ion-row *ngFor="let item of shoppingItems; let i = index">
 					<ion-col>
-						<ion-input [(ngModel)]="item.name"></ion-input>
+						<ion-input [(ngModel)]="item.item_name"></ion-input>
 					</ion-col>
 					<ion-col>
-						<ion-input [(ngModel)]="item.amount"></ion-input>
+						<ion-input [(ngModel)]="item.quantity"></ion-input>
 					</ion-col>
 					<ion-col>
 						<ion-input [(ngModel)]="item.price"></ion-input>
@@ -65,10 +65,10 @@
 				<!-- ADD NEW ITEM HERE -->
 				<ion-row>
 					<ion-col>
-						<ion-input type="text" placeholder = "Name" [(ngModel)] = "newItem.name" (keyup.enter)="addItem()"></ion-input>
+						<ion-input type="text" placeholder = "Name" [(ngModel)] = "newItem.item_name" (keyup.enter)="addItem()"></ion-input>
 					</ion-col>
 					<ion-col>
-						<ion-input type="text" placeholder = "Amount (optional)" [(ngModel)]="newItem.amount" (keyup.enter)="addItem()"></ion-input>
+						<ion-input type="text" placeholder = "Amount (optional)" [(ngModel)]="newItem.quantity" (keyup.enter)="addItem()"></ion-input>
 					</ion-col>
 					<ion-col>
 						<ion-input type="text" placeholder = "Price (optional)" [(ngModel)]="newItem.price" (keyup.enter)="addItem()"></ion-input>

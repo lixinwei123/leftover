@@ -32,7 +32,7 @@
 				<ion-row >
 					<ion-col>
 						<ion-list *ngFor="let item of shopLists; let i = index">
-							{{item.list_id}} <button ion-button icon-only style = "background-color: transparent;" (click) = "getList(item)"> <ion-icon name="md-arrow-forward" color = "primary"> </ion-icon></button>
+							<p>{{item.list_id}} </p><button ion-button icon-only style = "background-color: transparent;" (click) = "getList(item)"> <ion-icon name="md-arrow-forward" color = "primary"> </ion-icon></button>
 						</ion-list>
 					</ion-col>
 					<ion-col >

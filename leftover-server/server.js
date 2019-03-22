@@ -69,10 +69,10 @@ app.post('/addList', function(req, res) {
         let stmt = `INSERT into item VALUES`;
         for(var i = 0; i < items.length; i++){
          if (i == items.length - 1) {
-         stmt += `('${usrid}','${list_id}','${items[i].amount}','${items[i].price}','${items[i].name}');`;    
+         stmt += `('${usrid}','${list_id}','${items[i].quantity}','${items[i].price}','${items[i].item_name}');`;    
          }
          else{
-              stmt += `('${usrid}','${list_id}','${items[i].amount}','${items[i].price}','${items[i].name}'),`;
+              stmt += `('${usrid}','${list_id}','${items[i].quantity}','${items[i].price}','${items[i].item_name}'),`;
         };
          }
        db.query(stmt, (err, result) => {

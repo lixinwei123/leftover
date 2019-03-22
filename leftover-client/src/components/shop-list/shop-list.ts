@@ -16,8 +16,8 @@ export class ShopListComponent {
   shoppingListID: string = ""
 
   newItem: ShoppingItem = {
-	  name: "",
-	  amount: null,
+	  item_name: "",
+	  quantity: null,
 	  price: null,
   }
 
@@ -54,9 +54,9 @@ copyID() {
 }
 
 getShoppingItems(id: string = ""){
-	//TODO Kevin: get the list of shopping items here
-	this.restAPI.postRequest({list_id: id}, "/getOneList").then(res => {
+	this.restAPI.postRequest({list_id: id}, "getOneList").then(res => {
 		console.log('res', res)
+		this.shoppingItems = res
 	})
 }
 
@@ -90,8 +90,8 @@ addItem(){
 
 	this.shoppingItems.push(this.newItem)
 	this.newItem = {
-		name: "",
-		amount: null,
+		item_name: "",
+		quantity: null,
 		price: null,
 	}
 

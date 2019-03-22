@@ -1,5 +1,5 @@
 export interface ShoppingItem {
-    name: string,
-    amount?: number,
+    item_name: string,
+    quantity?: number,
     price?: number,
 }

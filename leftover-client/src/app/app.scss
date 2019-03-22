@@ -18,3 +18,10 @@
 	background-image:url('../assets/imgs/grocery.jpg');
 	background-size: cover;
 }
+
+body {
+	-webkit-user-select: text;
+	-moz-user-select: text;
+	-ms-user-select: text;
+	user-select: text;
+	}
