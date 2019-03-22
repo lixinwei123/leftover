@@ -15,7 +15,7 @@ import {RestProvider} from "../../providers/rest/rest";
 export class ListsComponent {
 
   text: string;
-  shopLists: [];
+  shopLists: Array<any>;
   nameLists: any;
   amountLists: any;
   priceLists: any;

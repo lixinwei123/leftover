@@ -7,15 +7,16 @@ module.exports = {
         let data = {
             "q": question
         }
+        console.log('data', data)
         return new Promise((resolve, reject) => {
             unirest.get(url)
             .header("X-RapidAPI-Key", API_KEY)
             .query(data)
             .end(function(response) {
                 console.log(response.status)
-                if (response.err) {
-                    reject(response.err)
-                }
+                // if (response.err) {
+                    // reject(response.err)
+                // }
                 
                 resolve(response.body)
             })

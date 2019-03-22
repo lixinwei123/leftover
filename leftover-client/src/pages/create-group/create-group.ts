@@ -94,7 +94,7 @@ export class CreateGroupPage {
   /**Adds random joke from joke API */
 
   askTrivia() {
-    this.restAPI.getRequest({}, '/askTrivia').then(response => {
+    this.restAPI.getRequest({}, 'askTrivia').then(response => {
       console.log('le joke', response.text)
       this.text = response.text
     })

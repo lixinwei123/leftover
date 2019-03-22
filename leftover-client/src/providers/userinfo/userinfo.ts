@@ -21,16 +21,16 @@ shoppingList : any;
 
   }
   	subData(){
-  	this.afAuth.authState.subscribe(data => {
-      if(data.uid){
-      	this.setUsrId(data.uid);
-        console.log("ok done");
-        this.ajaxLists(data.uid)
+      this.afAuth.authState.subscribe(data => {
+        if(data.uid){
+          this.setUsrId(data.uid);
+          console.log("ok done");
+          this.ajaxLists(data.uid)
+        }
+      else{
+        console.log("no one logged in yet");
       }
-     else{
-       console.log("no one logged in yet");
-     }
-    });
+      });
   	}
 
    ajaxLists(usrid){

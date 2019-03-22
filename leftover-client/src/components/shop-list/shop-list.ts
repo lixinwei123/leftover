@@ -55,6 +55,9 @@ copyID() {
 
 getShoppingItems(id: string = ""){
 	//TODO Kevin: get the list of shopping items here
+	this.restAPI.postRequest({list_id: id}, "/getOneList").then(res => {
+		console.log('res', res)
+	})
 }
 
 ionViewWillLeave(){
@@ -139,7 +142,7 @@ submitList() {
 /*****************API STUFF */
 	askQuestion() {
 		this.restAPI.postRequest(
-			{question: this.question}, "/askQuestion",
+			{question: this.question}, "askQuestion",
 		).then(response => {
 			console.log('le answer', response)
 			this.answer = response.answer || "Sorry, there is no answer right now."

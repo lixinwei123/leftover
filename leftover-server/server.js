@@ -2,26 +2,26 @@ const express = require('express');
 const mysql = require('mysql');
 const app = express();
 const bodyParser = require('body-parser');
-const logger = require('morgan');
-const methodOverride = require('method-override')
+// const logger = require('morgan');
+// const methodOverride = require('method-override')
 const cors = require('cors');
 const db = mysql.createConnection({
     host : 'localhost',
     user : 'root',
-    password: '630117122',
+    password: 'password',
     database: 'leftover'
 });
 const API = require("./api/api")
 const connection = mysql.createConnection({multipleStatements: true});
-app.use(logger('dev'));
+// app.use(logger('dev'));
 app.use(bodyParser.json());
-app.use(methodOverride());
+// app.use(methodOverride());
 app.use(cors());
 
 
 db.connect((err) => {
     if(err) {
-        // console.log("error", err);
+        console.log("error", err);
     }
     console.log("MySql connected..");
 });
@@ -107,19 +107,33 @@ app.post('/askQuestion', async function(req, res) {
     let answer = await API.askQuestion(question)
     console.log('answer', answer)
     res.send(answer)
+    
 })
 
+// app.post('/getOneList', function(req, res) {
+//     var usrId = req.body.id;
+//     let list_id = req.body.list_id
+//     console.log("pop",usrId,list_id)
+//     let sql1 = `select * from item where id = '${usrId}' && list_id = '${list_id}';`;
+//        db.query(sql1, (err, result) => {
+//             console.log("result",result,"error",err)
+//               res.send(result)
+//         });
+//    }
+//    );
+
+
 app.post('/getOneList', function(req, res) {
-    var usrId = req.body.id;
+    // var usrId = req.body.id;
     let list_id = req.body.list_id
-    console.log("pop",usrId,list_id)
-    let sql1 = `select * from item where id = '${usrId}' && list_id = '${list_id}';`;
+    console.log("pop",list_id)
+    let sql1 = `select * from item where list_id = '${list_id}';`;
        db.query(sql1, (err, result) => {
             console.log("result",result,"error",err)
               res.send(result)
         });
    }
-   );
+);
 
 
 app.listen('3000', () => {
