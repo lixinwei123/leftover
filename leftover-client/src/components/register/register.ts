@@ -88,7 +88,7 @@ finishRegistration(){
      lastname: this.lastname
    }
        console.log("registered",res.user.uid)
-    this.restAPI.postRequest(usrInfo,'/createUser').then(( result) =>{
+    this.restAPI.postRequest(usrInfo,'createUser').then(( result) =>{
       console.log(result);
     },
     (err) => {

@@ -13,6 +13,7 @@ import {AngularFireModule} from "@angular/fire";
 import {AngularFireAuthModule} from "@angular/fire/auth";
 import {FIREBASE_CONFIG} from './app.firebase.config';
 
+import {ListsComponent} from '../components/lists/lists';
 import {RegisterComponent} from '../components/register/register';
 import { RestProvider } from '../providers/rest/rest';
 import {ShopListComponent} from '../components/shop-list/shop-list';
@@ -24,7 +25,8 @@ import {MenuComponent} from '../components/menu/menu';
     // LoginPage,
     RegisterComponent,
     MenuComponent,
-    ShopListComponent
+    ShopListComponent,
+    ListsComponent
   ],
   imports: [
     BrowserModule,
@@ -39,7 +41,8 @@ import {MenuComponent} from '../components/menu/menu';
     HomePage,
     // LoginPage,
     RegisterComponent,
-    ShopListComponent
+    ShopListComponent,
+    ListsComponent
   ],
   providers: [
     StatusBar,

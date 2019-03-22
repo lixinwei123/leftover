@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams,Events,ModalController ,MenuController, AlertController} from 'ionic-angular';
 import {ShopListComponent} from '../../components/shop-list/shop-list';
-// import {OwnBookComponent} from '../../components/own-book/own-book';
+import {ListsComponent} from '../../components/lists/lists';
 import {UserinfoProvider} from "../../providers/userinfo/userinfo";
 import { RestProvider } from '../../providers/rest/rest';
 // import {FindMatchComponent} from '../../components/find-match/find-match';
@@ -51,6 +51,12 @@ export class CreateGroupPage {
   
   goToShopList(){
     let modal = this.modalCtrl.create(ShopListComponent);
+    this.mainChoice = false;
+    modal.present();
+  }
+
+  goToLists(){
+  	let modal = this.modalCtrl.create(ListsComponent);
     this.mainChoice = false;
     modal.present();
   }

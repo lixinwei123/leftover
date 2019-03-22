@@ -91,6 +91,7 @@ addItem(){
 		amount: null,
 		price: null,
 	}
+
 }
 
 //DELETE ITEM
@@ -100,12 +101,35 @@ deleteItem(index: number){
 
 //TODO Kevin: submit this.shoppingItems to SQL database here
 submitList() {
-	
 	if (this.editMode) {
 		//Update current list
 	}
 	else {
-		//Add a whole new list
+		var obj1 = {usrid: this.usrInfo.getUsrId(),
+				list_id: this.shoppingListID
+		}
+		var obj = {
+			items: this.shoppingItems,
+			list_id: this.shoppingListID,
+			userId: this.usrInfo.getUsrId()
+		}
+		this.restAPI.postRequest(obj1,"addListId").then(
+				success => {
+				},
+				fail =>{
+					console.log(fail,"dam")
+						this.restAPI.postRequest(obj,"addList").then(
+						gucci => {
+							this.usrInfo.ajaxLists(this.usrInfo.getUsrId());
+						}
+					)
+				}
+			)
+		this.restAPI.postRequest(obj,"addList").then(
+		gucci => {
+			this.usrInfo.ajaxLists(this.usrInfo.getUsrId());
+		}
+	)
 	}
 
 	this.viewCtrl.dismiss()
