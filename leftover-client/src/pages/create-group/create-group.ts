@@ -35,6 +35,7 @@ export class CreateGroupPage {
   	 this.events.subscribe('showChoices', () =>{
   		console.log("this got triggered");
   		this.mainChoice = true;
+  		this.usrInfo.ajaxLists(this.usrInfo.getUsrId());
   	});
       this.usrInfo.subData();
   }
@@ -79,6 +80,7 @@ export class CreateGroupPage {
           text: 'Submit',
           handler: (data) => {
             console.log(data[0])
+            this.mainChoice = false;
             this.modalCtrl.create(ShopListComponent, {id: data[0]}).present()
           }
         }

@@ -58,4 +58,8 @@ getList(item){
 		}
 		)
 }
+
+  ionViewWillLeave(){
+    this.events.publish('showChoices');
+  }
 }
